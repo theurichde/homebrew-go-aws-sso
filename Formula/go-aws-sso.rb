@@ -7,14 +7,14 @@ class Go_aws_sso < Formula
   head "https://github.com/theurichde/go-aws-sso.git", branch: "master"
   version "v0.4.0"
 
-  bottle do
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "TODO"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "TODO"
-    sha256 cellar: :any_skip_relocation, monterey:       "TODO"
-    sha256 cellar: :any_skip_relocation, big_sur:        "TODO"
-    sha256 cellar: :any_skip_relocation, catalina:       "TODO"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e403e60df30c2739027992d1a8361bd329aa52a50e9b1ec606c9b259b5fd346e"
-  end
+#   bottle do
+#     sha256 cellar: :any_skip_relocation, arm64_monterey: "TODO"
+#     sha256 cellar: :any_skip_relocation, arm64_big_sur:  "TODO"
+#     sha256 cellar: :any_skip_relocation, monterey:       "TODO"
+#     sha256 cellar: :any_skip_relocation, big_sur:        "TODO"
+#     sha256 cellar: :any_skip_relocation, catalina:       "TODO"
+#     sha256 cellar: :any_skip_relocation, x86_64_linux:   "e403e60df30c2739027992d1a8361bd329aa52a50e9b1ec606c9b259b5fd346e"
+#   end
 
   on_macos do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit # OSX ARM
