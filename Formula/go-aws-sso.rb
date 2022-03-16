@@ -27,7 +27,7 @@ class Go-aws-sso < Formula
     end
   end
 
-  on_linux
+  on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
         url "https://github.com/theurichde/go-aws-sso/releases/download/v0.4.0/go-aws-sso_0.4.0_linux_amd64.tar.gz"
         sha256 "e403e60df30c2739027992d1a8361bd329aa52a50e9b1ec606c9b259b5fd346e"
@@ -46,8 +46,6 @@ class Go-aws-sso < Formula
   end
 
   test do
-    json = "[{\"name\": \"Tom\"}, {\"name\": \"Jim\"}]"
-    assert_equal "Tom\nJim", pipe_output("#{bin}/dasel --plain -p json -m '.[*].name'", json).chomp
-    system
+    system "#{bin}/go-aws-sso --version"
   end
 end
