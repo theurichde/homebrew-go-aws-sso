@@ -5,7 +5,7 @@ class Go-aws-sso < Formula
   sha256 "ffb79f965269f1c34b0c2bf58ae5abbdbcbc71fd4a8c2dc09692db190128c8a8"
   license "MIT"
   head "https://github.com/theurichde/go-aws-sso.git", branch: "master"
-  version v0.4.0
+  version "v0.4.0"
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_monterey: "TODO"
