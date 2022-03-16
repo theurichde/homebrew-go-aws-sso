@@ -1,4 +1,4 @@
-class Go_aws_sso < Formula
+class GoAwsSso < Formula
   desc "Makes dealing with AWS SSO from local machines an ease."
   homepage "https://github.com/theurichde/go-aws-sso"
   url "https://github.com/theurichde/go-aws-sso/archive/v0.4.0.tar.gz"
