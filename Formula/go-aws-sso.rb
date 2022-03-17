@@ -8,7 +8,7 @@ class GoAwsSso < Formula
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w")
+    system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/go-aws-sso"
   end
 
   test do
