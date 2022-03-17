@@ -1,9 +1,6 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class GoAwsSso < Formula
   desc "Makes dealing with AWS SSO Logins an ease"
-  homepage ""
+  homepage "https://github.com/theurichde/go-aws-sso"
   url "https://github.com/theurichde/go-aws-sso/archive/refs/tags/v0.4.0.tar.gz"
   sha256 "11655f89608610c49e83a2c9ffcbe32aa37c623de00537bc59ac0b6ea320c562"
   license "MIT"
@@ -11,7 +8,6 @@ class GoAwsSso < Formula
   depends_on "go" => :build
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
     system "go", "build", *std_go_args(ldflags: "-s -w")
   end
 
