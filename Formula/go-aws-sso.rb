@@ -4,10 +4,12 @@ class GoAwsSso < Formula
   url "https://github.com/theurichde/go-aws-sso/archive/refs/tags/v0.4.0.tar.gz"
   sha256 "11655f89608610c49e83a2c9ffcbe32aa37c623de00537bc59ac0b6ea320c562"
   license "MIT"
+  version "0.4.0"
 
   depends_on "go" => :build
 
   def install
+    ldflags = "-s -w -X 'github.com/theurichde/cmd/go-aws-sso/main.version=#{version}'"
     system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/go-aws-sso"
   end
 
