@@ -1,8 +1,8 @@
 class GoAwsSso < Formula
   desc "Makes dealing with AWS SSO Logins an ease"
   homepage "https://github.com/theurichde/go-aws-sso"
-  url "https://github.com/theurichde/go-aws-sso/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "51e73d8e924f40a2065653dcb5d99d664101aa7d73da64ed64fef2c60f158cb8"
+  url "https://github.com/theurichde/go-aws-sso/archive/refs/tags/v0.6.0.tar.gz"
+  sha256 "ec6bd08338d88082c635e5cd0f28b32b09a130fa0ac5d3df9a16def87d405bb3"
   license "MIT"
 
   bottle do
