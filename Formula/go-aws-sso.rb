@@ -6,10 +6,10 @@ class GoAwsSso < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/theurichde/homebrew-go-aws-sso/releases/download/go-aws-sso-0.6.0"
-    sha256 cellar: :any_skip_relocation, big_sur:      "d980ae28341f66fdf3b61b8b2d222dd9f1689bf3fa4fc31797780505b3165d7a"
-    sha256 cellar: :any_skip_relocation, catalina:     "79ebd56757bcf5e7e6e5f28bf870190d1aab84fe00bf37cbf7a9062069f84503"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "24505248751c77d8f91192221ee5f1054c82fe7de415cca5a294533e9014e9fb"
+    root_url "https://github.com/theurichde/homebrew-go-aws-sso/releases/download/go-aws-sso-0.6.1"
+    sha256 cellar: :any_skip_relocation, big_sur:      "a6a4edfe03f8d03756d6a84fc92c55afd302e1815a8196732cc3ecca39a937b4"
+    sha256 cellar: :any_skip_relocation, catalina:     "74459448abbe520e127e56e661bdbc777ed43c4fd50a82bda2585a152b7f2236"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "e1028e8fb87abcc9d75dfe927d905e7358efe7af2d09530911433bb2c7210544"
   end
 
   depends_on "go" => :build
