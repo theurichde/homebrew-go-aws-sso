@@ -22,7 +22,6 @@ Or `brew tap theurichde/go-aws-sso` and then `brew install <formula>`.
 6. Put the label `pr-pull` on the PR
 7. The workflow is doing the rest
 
-
 ### Useful Links
 
 * [Homebrew blog post](https://brew.sh/2020/11/18/homebrew-tap-with-bottles-uploaded-to-github-releases/)

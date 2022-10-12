@@ -1,4 +1,4 @@
-name: brew pr-pull
+name: Brew Publish
 on:
   pull_request_target:
     types:

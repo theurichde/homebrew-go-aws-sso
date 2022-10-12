@@ -1,0 +1,38 @@
+name: Create PR with new Version
+on:
+  workflow_dispatch:
+    inputs:
+        version:
+          type: string
+          required: true
+          description: The version to build
+
+jobs:
+  create-pr:
+    permissions:
+      pull-requests: write
+      actions: write
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.Release_PAT }}
+      - name: Calculate sha256
+        run: |
+          curl -L https://github.com/theurichde/go-aws-sso/archive/refs/tags/v${{ github.event.inputs.version}}.tar.gz -o /tmp/go-aws-sso.tar.gz
+          echo "sha256sum=$(sha256sum /tmp/go-aws-sso.tar.gz | head -c64)" >> $GITHUB_ENV
+      - name: fill-template
+        run: cat ./template/go-aws-sso.tmpl | sed 's/$VERSION/${{ github.event.inputs.version}}/' | sed 's/$SHA256_CHECKSUM/${{env.sha256sum}}/' > ./Formula/go-aws-sso.rb
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: ./Formula/go-aws-sso.rb
+          default_author: github_actions
+          new_branch: release_v${{ github.event.inputs.version}}
+          message: "feat: update to release v${{ github.event.inputs.version}}"
+          push: true
+      - name: Create PR
+        env:
+          GH_TOKEN: ${{ secrets.Release_PAT }}
+        run: |
+          gh pr create --base main --head release_v${{ github.event.inputs.version}} --fill 
