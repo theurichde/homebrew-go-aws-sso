@@ -28,7 +28,7 @@ jobs:
 
       - name: Cache Homebrew Bundler RubyGems
         id: cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
           key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
@@ -37,13 +37,9 @@ jobs:
       - name: Install Homebrew Bundler RubyGems
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
-
       - run: brew test-bot --only-cleanup-before
-
       - run: brew test-bot --only-setup
-
       - run: brew test-bot --only-tap-syntax
-
       - run: brew test-bot --only-formulae
         if: github.event_name == 'pull_request'
 
@@ -53,3 +49,14 @@ jobs:
         with:
           name: bottles
           path: '*.bottle.*'
+  label-pr:
+     needs:
+       - test-bot
+     runs-on: ubuntu-22.04
+     name: Label the PR
+     permissions:
+       pull-requests: write
+     steps:
+       - uses: actions-ecosystem/action-add-labels@v1
+         with:
+           labels: pr-pull
