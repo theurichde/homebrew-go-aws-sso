@@ -1,16 +1,12 @@
 class GoAwsSso < Formula
   desc "Makes dealing with AWS SSO Logins an ease"
   homepage "https://github.com/theurichde/go-aws-sso"
-  url "https://github.com/theurichde/go-aws-sso/archive/refs/tags/v1.2.0.tar.gz"
-  sha256 "ef51d8bf3774046913cff75131f685c564199c689ebf25e154b9465c021581fb"
+  url "https://github.com/theurichde/go-aws-sso/archive/refs/tags/v1.3.0.tar.gz"
+  sha256 "bb385a30255d4a7b0fbb51aab43eb9dc737db8e13e00815bc9a370e88de89183"
   license "MIT"
 
   bottle do
-    root_url "https://github.com/theurichde/homebrew-go-aws-sso/releases/download/go-aws-sso-1.2.0"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, monterey:     "c3282e12d5c92df564b5871bf3629c677438cbf5ecbe5f5d9cf257e2ef7ad23c"
-    sha256 cellar: :any_skip_relocation, big_sur:      "0ad11912b16bf00b38e7d0bb596cea7c5a5c0f29f2cfeb49df957d198834f40c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "f22e16440c4b30658e185f5fc697abc4282261c5bde01adda1ab25519ecdac9e"
+    root_url "https://github.com/theurichde/homebrew-go-aws-sso/releases/download/go-aws-sso-1.3.0"
   end
 
   depends_on "go" => :build
