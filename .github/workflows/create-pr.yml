@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.Release_PAT }}
       - name: Calculate sha256
         run: |
           curl -L https://github.com/theurichde/go-aws-sso/archive/refs/tags/v${{ github.event.inputs.version}}.tar.gz -o /tmp/go-aws-sso.tar.gz
