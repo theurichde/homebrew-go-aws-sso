@@ -7,6 +7,7 @@ class GoAwsSso < Formula
 
   bottle do
     root_url "https://github.com/theurichde/homebrew-go-aws-sso/releases/download/go-aws-sso-1.4.3"
+    sha256 cellar: :any_skip_relocation, monterey: "7a4f75f35303eb460725a366a503847a9cfa0340f7e5be99ee8e267b59f1df83"
   end
 
   depends_on "go" => :build
