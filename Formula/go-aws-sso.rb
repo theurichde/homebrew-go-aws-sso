@@ -13,7 +13,7 @@ class GoAwsSso < Formula
 
   def install
     ldflags = "-s -w -X main.version=#{version}"
-    system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/go-aws-sso"
+    system "go", "build", *std_go_args(ldflags), "./cmd/go-aws-sso"
   end
 
   test do
