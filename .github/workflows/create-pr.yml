@@ -24,7 +24,7 @@ jobs:
       - name: fill-template
         run: cat ./template/go-aws-sso.tmpl | sed 's/$VERSION/${{ github.event.inputs.version}}/' | sed 's/$SHA256_CHECKSUM/${{env.sha256sum}}/' > ./Formula/go-aws-sso.rb
       - name: Add and Commit
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v11
         with:
           add: ./Formula/go-aws-sso.rb
           default_author: github_actions
