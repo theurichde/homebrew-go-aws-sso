@@ -1,34 +1,36 @@
-name: Brew Test & Build
+name: Cask Test
 on:
   push:
     branches:
       - main
     paths:
-      - '**.rb'
+      - 'Casks/*.rb'
+      - '.github/workflows/tests.yml'
   pull_request:
     branches:
       - main
     paths:
-      - '**.rb'
+      - 'Casks/*.rb'
+      - '.github/workflows/tests.yml'
     types:
       - opened
       - ready_for_review
       - synchronize
       - reopened
 
+permissions:
+  contents: read
+
 env:
   HOMEBREW_NO_INSTALL_FROM_API: 1
 
 jobs:
-  test-bot:
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-11, macos-12 ]
-    runs-on: ${{ matrix.os }}
+  test-cask:
+    runs-on: macos-latest
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@848c272c7bfe984a197bd4d16383f4c106ec61e6 # 2026.09.21.1
 
       - name: Cache Homebrew Bundler RubyGems
         id: cache
@@ -41,27 +43,9 @@ jobs:
       - name: Install Homebrew Bundler RubyGems
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
-      - run: brew test-bot --only-cleanup-before
-      - run: brew test-bot --only-setup
-      - run: brew test-bot --only-tap-syntax
-      - run: brew test-bot --only-formulae
-        if: github.event_name == 'pull_request'
 
-      - name: Upload bottles as artifact
-        if: always() && github.event_name == 'pull_request'
-        uses: actions/upload-artifact@main
-        with:
-          name: bottles
-          path: '*.bottle.*'
-  label-pr:
-    needs:
-      - test-bot
-    runs-on: ubuntu-22.04
-    name: Label the PR
-    permissions:
-      pull-requests: write
-    steps:
-      - uses: actions-ecosystem/action-add-labels@v1
-        with:
-          labels: pr-pull
-          github_token: ${{ secrets.Release_PAT }}
+      - name: Audit cask
+        run: brew audit --cask --strict theurichde/go-aws-sso/go-aws-sso
+
+      - name: Verify release artifact
+        run: brew fetch --cask --force theurichde/go-aws-sso/go-aws-sso
