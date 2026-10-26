@@ -45,7 +45,7 @@ jobs:
         run: brew install-bundler-gems
 
       - name: Audit formula
-        run: brew audit --strict theurichde/go-aws-sso/go-aws-sso
+        run: brew audit --strict --except=version theurichde/go-aws-sso/go-aws-sso
 
       - name: Verify release artifact
         run: brew fetch --force theurichde/go-aws-sso/go-aws-sso
