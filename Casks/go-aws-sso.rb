@@ -35,7 +35,7 @@ cask "go-aws-sso" do
 
   postflight_steps do
     on_macos do
-      run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{staged_path}}/go-aws-sso"]
+      run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{staged_path}}/go-aws-sso"], must_succeed: false
     end
   end
 
