@@ -1,16 +1,16 @@
-name: Formula Test
+name: Cask Test
 on:
   push:
     branches:
       - main
     paths:
-      - 'Formula/*.rb'
+      - 'Casks/*.rb'
       - '.github/workflows/tests.yml'
   pull_request:
     branches:
       - main
     paths:
-      - 'Formula/*.rb'
+      - 'Casks/*.rb'
       - '.github/workflows/tests.yml'
     types:
       - opened
@@ -25,7 +25,7 @@ env:
   HOMEBREW_NO_INSTALL_FROM_API: 1
 
 jobs:
-  test-formula:
+  test-cask:
     runs-on: macos-latest
     steps:
       - name: Set up Homebrew
@@ -44,14 +44,8 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
 
-      - name: Audit formula
-        run: brew audit --strict --except=version theurichde/go-aws-sso/go-aws-sso
+      - name: Audit cask
+        run: brew audit --cask --strict theurichde/go-aws-sso/go-aws-sso
 
       - name: Verify release artifact
-        run: brew fetch --force theurichde/go-aws-sso/go-aws-sso
-
-      - name: Install formula
-        run: brew install --formula theurichde/go-aws-sso/go-aws-sso
-
-      - name: Test formula
-        run: brew test theurichde/go-aws-sso/go-aws-sso
+        run: brew fetch --cask --force theurichde/go-aws-sso/go-aws-sso

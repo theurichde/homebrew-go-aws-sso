@@ -1,22 +1,21 @@
 # go-aws-sso Homebrew Tap
 
-This tap distributes [go-aws-sso](https://github.com/theurichde/go-aws-sso) as a Homebrew formula.
+This tap distributes [go-aws-sso](https://github.com/theurichde/go-aws-sso) as a Homebrew cask.
 
 ## Install
 
 ```sh
-brew install theurichde/go-aws-sso/go-aws-sso
+brew install --cask theurichde/go-aws-sso/go-aws-sso
 ```
 
-## Migrate from the cask
+## Reinstall an existing cask
 
-If you installed the old cask, remove it before you install the formula:
+The cask removes the macOS quarantine flag during install. If you installed an earlier version, reinstall it to apply the hook:
 
 ```sh
-brew uninstall --cask go-aws-sso
-brew install theurichde/go-aws-sso/go-aws-sso
+brew reinstall --cask theurichde/go-aws-sso/go-aws-sso
 ```
 
-GoReleaser generates and publishes `Formula/go-aws-sso.rb` automatically when a `v*` release tag is pushed to the [go-aws-sso repository](https://github.com/theurichde/go-aws-sso).
+GoReleaser generates and publishes `Casks/go-aws-sso.rb` automatically when a `v*` release tag is pushed to the [go-aws-sso repository](https://github.com/theurichde/go-aws-sso). No manual formula updates or bottle PRs are needed.
 
-See [Homebrew's documentation](https://docs.brew.sh) for more information about taps and formulae.
+See [Homebrew's documentation](https://docs.brew.sh) for more information about taps and casks.
